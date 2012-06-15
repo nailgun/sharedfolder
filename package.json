@@ -20,6 +20,6 @@
         "node": "*"
     },
     "bin": {
-        "sharedfolder": "./index"
+        "sharedfolder": "./index.js"
     }
 }
