@@ -2,7 +2,7 @@
     "author": "Dmitry Bashkatov <dbashkatov@gmail.com>",
     "name": "ishare",
     "description": "Keeps directory shared.",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "homepage": "http://github.com/nailgun/ishare",
     "repository": {
         "type": "git",
