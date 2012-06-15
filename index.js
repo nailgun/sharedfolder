@@ -2,7 +2,9 @@ var _ = require('underscore'),
     fs = require('fs'),
     path = require('path'),
     CronJob = require('cron').CronJob,
-    optimist = require('optimist');
+    optimist = require('optimist'),
+    child_process = require('child_process'),
+    daemon = require('daemon');
 
 var S_ISUID = 04000,
     S_ISGID = 02000,
@@ -18,10 +20,8 @@ var S_ISUID = 04000,
     S_IXOTH = 00001,
     ANY_EXEC = S_IXOTH | S_IXGRP | S_IXUSR;
 
-exports.Watcher = function (dirs) {
-    var watcher = {
-        dirs: dirs
-    };
+exports.Watcher = function () {
+    var watcher = {};
 
     // === PRIVATE ===
     var jobs = [];
@@ -67,9 +67,7 @@ exports.Watcher = function (dirs) {
     };
 
     function fixAll () {
-        _.each(dirs, function (dir) {
-            fix(dir);
-        });
+        fix('/');
     };
 
     function watchDir (dir) {
@@ -156,6 +154,15 @@ function main() {
         return;
     }
 
-    var watcher = exports.Watcher(argv._);
-    watcher.start();
+    if (argv._.length == 1) {
+        var dir = argv._[0];
+        console.log('chroot in', dir);
+        daemon.chroot(dir);
+        var watcher = exports.Watcher(argv._);
+        watcher.start();
+    } else {
+        var children = _.map(argv._, function (dir) {
+            return child_process.fork(__filename, [dir]);
+        });
+    }
 }
