@@ -71,18 +71,13 @@ exports.Watcher = function () {
     };
 
     function watchDir (dir) {
-        console.log('watching', dir);
-
         watching[dir] = fs.watch(dir, function(event, entry) {
             var filename = path.join(dir, entry);
             changedFiles[filename] = 1;
-            console.log('adding', filename);
         });
     };
 
     function fix (filename) {
-        console.log('checking', filename);
-
         fs.open(filename, 'r', function (err, fd) {
             if (err) {
                 if (err.errno == 34) {
@@ -107,7 +102,6 @@ exports.Watcher = function () {
                     newMode |= 00666;
                 }
                 if (stats.mode != newMode) {
-                    console.log('fixing', filename);
                     fs.fchmod(fd, newMode, logError(filename, function() {
                         fs.close(fd, logError(filename));
                     }));
