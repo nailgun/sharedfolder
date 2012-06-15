@@ -1,12 +1,12 @@
 {
     "author": "Dmitry Bashkatov <dbashkatov@gmail.com>",
-    "name": "ishare",
-    "description": "Keeps directory shared.",
+    "name": "sharedfolder",
+    "description": "Keeps folder shared.",
     "version": "1.0.0",
-    "homepage": "http://github.com/nailgun/ishare",
+    "homepage": "http://github.com/nailgun/sharedfolder",
     "repository": {
         "type": "git",
-        "url": "git://github.com/nailgun/ishare.git"
+        "url": "git://github.com/nailgun/sharedfolder.git"
     },
     "dependencies": {
         "cron": "0.3.x",
@@ -20,6 +20,6 @@
         "node": "*"
     },
     "bin": {
-        "ishare": "./index"
+        "sharedfolder": "./index"
     }
 }
