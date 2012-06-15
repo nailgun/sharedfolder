@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var _ = require('underscore'),
     fs = require('fs'),
     path = require('path'),
