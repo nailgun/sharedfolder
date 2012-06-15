@@ -1,0 +1,19 @@
+{
+  "author": "Dmitry Bashkatov <dbashkatov@gmail.com>",
+  "name": "ishare",
+  "description": "Keeps directory shared.",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "dependencies": {
+      "cron": "0.3.x",
+      "optimist": "0.3.x",
+      "underscore": "1.3.x"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
